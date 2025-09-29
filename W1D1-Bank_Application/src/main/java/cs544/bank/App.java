@@ -4,15 +4,24 @@ package cs544.bank;
 
 import java.util.Collection;
 
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import cs544.bank.domain.Account;
 import cs544.bank.domain.AccountEntry;
 import cs544.bank.domain.Customer;
 import cs544.bank.service.AccountService;
 import cs544.bank.service.IAccountService;
 
-
-public class App {
+@SpringBootApplication
+public class App implements CommandLineRunner {
 	public static void main(String[] args) {
+		SpringApplication.run(App.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
 		IAccountService accountService = new AccountService();
 		// create 2 accounts;
 		accountService.createAccount(1263862, "Frank Brown");
@@ -46,7 +55,6 @@ public class App {
 					account.getBalance());
 		}
 	}
-
 }
 
 
