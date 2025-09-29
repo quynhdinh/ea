@@ -1,0 +1,8 @@
+# ignore all .vscode folder
+.vscode/
+# ignore all target folders
+target/
+all class files
+*.class
+# ignore all .idea folder
+.idea/
