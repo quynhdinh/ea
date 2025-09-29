@@ -10,23 +10,20 @@ import cs544.bank.jms.IJMSSender;
 import cs544.bank.jms.JMSSender;
 import cs544.bank.logging.ILogger;
 import cs544.bank.logging.Logger;
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 
-
-
-
-
+@Service
 public class AccountService implements IAccountService {
+	@Autowired
 	private IAccountDAO accountDAO;
+	@Autowired
 	private ICurrencyConverter currencyConverter;
+	@Autowired
 	private IJMSSender jmsSender;
+	@Autowired
 	private ILogger logger;
 	
-	public AccountService(){
-		accountDAO=new AccountDAO();
-		currencyConverter= new CurrencyConverter();
-		jmsSender =  new JMSSender();
-		logger = new Logger();
-	}
 
 	public Account createAccount(long accountNumber, String customerName) {
 		Account account = new Account(accountNumber);

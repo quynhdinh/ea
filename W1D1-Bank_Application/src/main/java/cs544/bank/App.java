@@ -13,6 +13,7 @@ import cs544.bank.domain.AccountEntry;
 import cs544.bank.domain.Customer;
 import cs544.bank.service.AccountService;
 import cs544.bank.service.IAccountService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @SpringBootApplication
 public class App implements CommandLineRunner {
@@ -20,9 +21,11 @@ public class App implements CommandLineRunner {
 		SpringApplication.run(App.class, args);
 	}
 
+	@Autowired
+	private IAccountService accountService;
+
 	@Override
 	public void run(String... args) throws Exception {
-		IAccountService accountService = new AccountService();
 		// create 2 accounts;
 		accountService.createAccount(1263862, "Frank Brown");
 		accountService.createAccount(4253892, "John Doe");
