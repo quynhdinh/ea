@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class EmailLoggingAspect {
-    @After("execution(* cs544.EmailSender.sendEmail(..))")
-    public void logEmailSent() {
-        System.out.println(new java.util.Date() + " method= sendMail");
+    @After("execution(* cs544.EmailSender.sendEmail(..)) && args(email, message)")
+    public void logEmailSent(String email, String message) {
+        System.out.println(new java.util.Date() + " method= sendEmail address=" + email + " message=" + message);
     }
 }
