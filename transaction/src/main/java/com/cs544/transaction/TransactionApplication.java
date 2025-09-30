@@ -27,21 +27,23 @@ class InitSomeProducts implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		productService.deleteAllProducts();
 		// Add some products
-		productService.addProduct("Product1", 100);
-		productService.addProduct("Product2", 200);
-		productService.addProduct("Product3", 300);
-		
-		// Get and display all products
-		System.out.println("=== All Products ===");
-		Iterable<Product> products = productService.getAllProducts();
-		products.forEach(product -> {
+		Long product2 = productService.createProduct("iPhone 17", 2000);
+		System.out.println("Product created id: " + product2);
+		productService.retrieveProduct(product2).ifPresent(product -> {
 			System.out.println("ID: " + product.getId() + 
 							   ", Name: " + product.getName() + 
 							   ", Price: $" + product.getPrice() + 
 							   ", Version: " + product.getVersion());
 		});
-		System.out.println("===================");
+		productService.updateProductPrice(product2, 3000);
+		productService.retrieveProduct(product2).ifPresent(product -> {
+			System.out.println("ID: " + product.getId() + 
+							   ", Name: " + product.getName() + 
+							   ", Price: $" + product.getPrice() + 
+							   ", Version: " + product.getVersion());
+		});
 	}
 
 }

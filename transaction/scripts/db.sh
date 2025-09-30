@@ -1,3 +1,4 @@
+#!/bin/bash
 docker run --name spring-boot-postgres-db \
 -e POSTGRES_DB=homework_db \
 -e POSTGRES_USER=postgres \
