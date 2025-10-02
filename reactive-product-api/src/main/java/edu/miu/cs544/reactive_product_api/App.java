@@ -1,11 +1,14 @@
 package edu.miu.cs544.reactive_product_api;
 
+import java.net.URI;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -85,19 +88,29 @@ class ProductController {
 		return productService.findAllProducts();
 	}
 	@GetMapping("/api/products/{id}")
-	public Mono<Product> getProductById(@PathVariable String id) {
-		return productService.findProductById(id);
+	public Mono<ResponseEntity<Product>> getProductById(@PathVariable String id) {
+        return productService.findProductById(id)
+            .map(product -> ResponseEntity.ok(product))
+            .defaultIfEmpty(ResponseEntity.notFound().build());
 	}
 	@PostMapping("/api/products")
-	public Mono<Product> createProduct(@RequestBody Product product) {
-		return productService.saveProduct(product);
+	public Mono<ResponseEntity<Product>> createProduct(@RequestBody Product product) {
+        return productService.saveProduct(product)
+            .map(savedProduct -> {
+                URI location = URI.create("/api/products/" + savedProduct.getId());
+                return ResponseEntity.created(location).body(savedProduct);
+            });
 	}
 	@PutMapping("/api/products/{id}")
-	public Mono<Product> updateProduct(@PathVariable String id, @RequestBody Product product) {
-		return productService.updateProduct(id, product);
+	public Mono<ResponseEntity<Product>> updateProduct(@PathVariable String id, @RequestBody Product product) {
+        return productService.updateProduct(id, product)
+            .map(updatedProduct -> ResponseEntity.ok(updatedProduct))
+            .defaultIfEmpty(ResponseEntity.notFound().build());
 	}
 	@DeleteMapping("/api/products/{id}")
-	public Mono<Void> deleteProduct(@PathVariable String id) {
-		return productService.deleteProduct(id);
+	public Mono<ResponseEntity<Void>> deleteProduct(@PathVariable String id) {
+        return productService.deleteProduct(id)
+            .then(Mono.just(ResponseEntity.noContent().<Void>build()))
+            .defaultIfEmpty(ResponseEntity.notFound().build());
 	}
 }
