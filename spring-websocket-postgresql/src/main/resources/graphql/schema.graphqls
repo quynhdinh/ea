@@ -1,0 +1,15 @@
+type Message {
+    id: ID!
+    sender: String!
+    content: String!
+    timestamp: String # Represent OffsetDateTime as String
+}
+
+type Query {
+    messages: [Message!]
+    messageById(id: ID!): Message
+}
+
+type Mutation {
+    createMessage(content: String!, sender: String!): Message!
+}
