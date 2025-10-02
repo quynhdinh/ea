@@ -9,4 +9,4 @@ docker run --name spring-boot-postgres-db \
 -d pgvector/pgvector:0.8.1-pg17-trixie
 
 # script to execute psql command inside the container
-docker exec -it spring-boot-postgres-db psql -U postgres -d homework_db
+# docker exec -it spring-boot-postgres-db psql -U postgres -d homework_db
