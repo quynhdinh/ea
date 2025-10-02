@@ -8,8 +8,10 @@ import org.springframework.stereotype.Repository;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.time.OffsetDateTime;
+
 @SpringBootApplication
 public class App {
 	public static void main(String[] args) {
@@ -29,12 +31,13 @@ class Product {
     private Double price;
     @Version
     private Long version;
-
 }
 
-
+// only getter, no setter for immutability
+@Getter
 @Entity
 @Table(name = "messages")
+@NoArgsConstructor // Default constructor required by JPA
 class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,19 +52,11 @@ class Message {
     @Column(updatable = false)
     private OffsetDateTime timestamp;
 
-    public Message() {} // Default constructor required by JPA
-
     public Message(String sender, String content) {
         this.sender = sender;
         this.content = content;
         this.timestamp = OffsetDateTime.now();
     }
-
-    // only getters, no setters (immutable after creation)
-    public Long getId() { return id; }
-    public String getSender() { return sender; }
-    public String getContent() { return content; }
-    public OffsetDateTime getTimestamp() { return timestamp; }
 
     @Override
     public String toString() {
@@ -71,4 +66,3 @@ class Message {
 
 @Repository
 interface MessageRepository extends JpaRepository<Message, Long> {}
-
