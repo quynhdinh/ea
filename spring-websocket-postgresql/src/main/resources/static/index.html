@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Spring WebSocket Chat</title>
+<style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    #chat-container { width: calc(100% - 25px); border: 1px solid #ccc; padding: 10px; height: 80vh; min-height: 200px; margin: 5px 0px; overflow-y: scroll; }
+    #username-input { width: 100px; padding: 5px; }
+    #message-input { width: calc(100% - 200px); padding: 5px; }
+    #send-button { width: 60px; padding: 5px; }
+    .message { margin-bottom: 5px; display: flex; }
+    .sender { font-weight: bold; width: 100px; text-align: right; margin-right: 10px; }
+</style>
+</head>
+<body>
+<h1>Spring WebSocket Chat</h1>
+
+<div id="connection-status">Connecting...</div>
+<div id="chat-container"></div>
+<input type="text" id="username-input" placeholder="Your name" value="Obinna">
+<input type="text" id="message-input" placeholder="Type a message...">
+<button id="send-button">Send</button>
+
+<script>
+    const connectionStatus = document.getElementById('connection-status');
+    const chatContainer = document.getElementById('chat-container');
+    const usernameInput = document.getElementById('username-input');
+    const messageInput = document.getElementById('message-input');
+    const sendButton = document.getElementById('send-button');
+
+    let webSocket;
+
+    function connect() {
+        webSocket = new WebSocket('ws://' + window.location.host + '/chat');
+
+        webSocket.onopen = function() {
+            connectionStatus.innerText = 'Connected!';
+        };
+
+        webSocket.onmessage = function(event) {
+            displayMessage(event.data);
+        };
+
+        webSocket.onerror = function(error) {
+            connectionStatus.innerText = 'WebSocket error: ' + error;
+            console.error('WebSocket Error: ', error);
+        };
+
+        webSocket.onclose = function() {
+            connectionStatus.innerText = 'Disconnected. Please refresh the page to reconnect.';
+        };
+    }
+
+    function sendMessage() {
+        const messageContent = messageInput.value.trim();
+        const username = usernameInput.value.trim() || 'Anon';
+
+        if (messageContent && webSocket && webSocket.readyState === WebSocket.OPEN) {
+            const chatMessage = {
+                sender: username,
+                content: messageContent
+            };
+            webSocket.send(JSON.stringify(chatMessage));
+            messageInput.value = ''; // Clear input
+        }
+    }
+
+    function displayMessage(messageData) {
+        const message = JSON.parse(messageData);
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message');
+
+        const senderElement = document.createElement('span');
+        senderElement.classList.add('sender');
+        senderElement.textContent = message.sender + ': ';
+
+        const contentElement = document.createElement('span');
+        contentElement.textContent = message.content;
+
+        messageElement.appendChild(senderElement);
+        messageElement.appendChild(contentElement);
+        chatContainer.appendChild(messageElement);
+        chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to bottom
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        sendButton.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        connect();
+    });
+</script>
+</body>
+</html>
