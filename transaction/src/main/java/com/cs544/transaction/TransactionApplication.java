@@ -5,17 +5,73 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.*;
+import lombok.*;
+import jakarta.persistence.*;
+import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import jakarta.transaction.Transactional;
 
-import com.cs544.transaction.service.ProductService;
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private Double price;
+    @Version
+    private Long version;
+    public Product(String name, Double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+}
 
 @SpringBootApplication
 public class TransactionApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(TransactionApplication.class, args);
     }
+}
+@Repository
+interface ProductRepository extends JpaRepository<Product, Long> {}
 
+@Service
+@Transactional
+class ProductService {
+    private final ProductRepository productRepository;
+
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
+    public Long createProduct(String name, double price) {
+        Product product = productRepository.save(new Product(name, price));
+        return product.getId();
+    }
+
+    public void deleteAllProducts() {
+        productRepository.deleteAll();
+    }
+
+    public Optional<Product> retrieveProduct(Long id) {
+        return productRepository.findById(id);
+    }
+
+    public void updateProductPrice(Long productId, double newPrice) {
+        productRepository.findById(productId).ifPresent(product -> {
+            product.setPrice(newPrice);
+            productRepository.save(product);
+        });
+    }
+
+    public Iterable<Product> getAllProducts() {
+        return productRepository.findAll();
+    }
 }
 
 @Component
