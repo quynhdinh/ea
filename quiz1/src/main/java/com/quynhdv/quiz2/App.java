@@ -85,3 +85,13 @@ class BClass {
         return text;
     }
 }
+/*
+ BClass Constructor
+AClass Constructor
+Setting text to: Hello
+AwesomeAspect Constructor - text: null
+AwesomeAspect start method - text: Test
+2025-10-03T12:39:27.244-05:00  INFO 49973 --- [           main] com.quynhdv.quiz2.App                    : Started App in 0.378 seconds (process running for 0.503)
+This is a Test
+This is a Something
+ */

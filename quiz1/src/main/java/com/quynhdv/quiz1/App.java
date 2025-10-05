@@ -13,7 +13,7 @@
 
 // import jakarta.annotation.PostConstruct;
 
-// // @SpringBootApplication
+// @SpringBootApplication
 // public class App implements CommandLineRunner {
 //     @Autowired
 //     private MyClass myClass;
@@ -23,12 +23,11 @@
 //     }
 //     @Override
 //     public void run(String... args) throws Exception {
-//         myClass.sayHello();
 //         myClass.setText("Testing");
+//         myClass.sayHello();
 //     }
     
 // }
-// @Aspect
 // @Configuration
 // class TraceAspect {
 //     @Value("Trace")
@@ -40,7 +39,7 @@
 //     public void start(){
 //         System.out.println("TraceAspect start method - text: " + text);
 //     }
-//     @Before("execution(* com.quynhdv.quiz1.MyClass.*(..))")
+//     @Before("execution(* com.quynhdv.quiz1.*.*(..))")
 //     public void beforeTrace(JoinPoint jp){
 //         System.out.println(text + " Before method: " + jp.getSignature().getName());
 //         if(jp.getTarget() instanceof MyClass){
@@ -68,3 +67,18 @@
 //         return text;
 //     }
 // }
+// /*
+//  * Expected output:
+// Setting text to: Hello
+// MyClass Constructor - text: Hello
+// TraceAspect Constructor - text: null
+// TraceAspect start method - text: Trace
+// -- Started App in some seconds
+// Trace Before Method: run
+// Trace Before Method: setText
+// Setting text to: Change
+// Setting text to : Testing
+// Trace Before Method: sayHello
+// Setting text to: Change
+// This is a Change
+//  */
