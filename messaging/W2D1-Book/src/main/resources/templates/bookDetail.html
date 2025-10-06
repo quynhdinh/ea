@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>${msg} a Book</title>
+	<style>
+		.error {
+			color: red;
+		}
+	</style>
+</head>
+
+<body>
+	<form th:action="${msg} == 'Update' ? '../books/' + ${book.id} : '../books'" method="post">
+	<table>
+		<tr>
+			<td>Title:</td>
+			<td>
+				<input type="text" name="title" th:value="${book.title}" /> 
+				<span th:if="${#fields.hasErrors('book.title')}" 
+				th:errors="${book.title}" class="error"></span>
+			</td>
+		</tr>
+		<tr>
+			<td>ISBN:</td>
+			<td>
+				<input type="text" name="ISBN" th:value="${book.ISBN}" /> 
+				<span th:if="${#fields.hasErrors('book.ISBN')}" 
+				th:errors="${book.ISBN}" class="error"></span>
+			</td>
+		</tr>
+		<tr>
+			<td>Author:</td>
+			<td>
+				<input type="text" name="author" th:value="${book.author}" /> 
+				<span th:if="${#fields.hasErrors('book.author')}" 
+				th:errors="${book.author}" class="error"></span>
+			</td>
+		</tr>
+		<tr>
+			<td>Price:</td>
+			<td>
+				<input type="text" name="price" th:value="${book.price}" /> 
+				<span th:if="${#fields.hasErrors('book.price')}" 
+				th:errors="${book.price}" class="error"></span>
+			</td>
+		</tr>
+	</table>
+	<input type="submit" th:value="${msg}"/>
+	</form>
+
+	<form th:if="${msg == 'Update'}" th:action="|delete?bookId=${book.id}|" method="post">
+		<button type="submit">Delete</button>
+	</form>
+</body>
+
+</html>

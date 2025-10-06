@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Books currently in the shop</title>
+</head>
+
+<body>
+	<h1>Books currently in the shop</h1>
+	<table>
+		<tr th:each="book : ${books}">
+			<td th:text="${book.title}"></td>
+			<td th:text="${book.ISBN}"></td>
+			<td th:text="${book.author}"></td>
+			<td th:text="${book.price}"></td>
+			<td sec:authorize="hasRole('ROLE_ADMIN')">
+				<a th:href="|books/${book.id}|">edit</a>
+			</td>
+		</tr>
+	</table>
+
+	<a sec:authorize="hasRole('ROLE_ADMIN')" href="books/add"> Add a book</a>
+	<br>
+	<a href="logout">Logout</a>
+</body>
+
+</html>
