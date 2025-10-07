@@ -13,10 +13,11 @@ public class App {
 
 	@Bean
 	public NewTopic hello() {
-		return TopicBuilder.name("hello").build();
+		return TopicBuilder.name("book").build();
 	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(App.class, args);
 	}
 }
+

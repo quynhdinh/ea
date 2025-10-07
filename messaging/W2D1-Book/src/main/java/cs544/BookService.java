@@ -7,6 +7,8 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import cs544.message.Book;
+
 @Service
 @Transactional
 public class BookService {
