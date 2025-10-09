@@ -19,7 +19,7 @@ public class AccountDaoJpaTest {
     @Autowired
     private AccountDaoJpa accountDao;
 
-    // @Test
+    @Test
     public void testFindByCustomerName() {
         Customer customer1 = new Customer("John Doe");
         Account account1 = new Account(12345);

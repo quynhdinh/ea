@@ -48,7 +48,6 @@ public class AccountControllerRestAssuredTest {
             .post("/accounts/{id}/deposit")
             .then()
             .statusCode(200);
-        // empty response
     }
     @Test
     public void testWithdrawUSD() {
@@ -73,7 +72,6 @@ public class AccountControllerRestAssuredTest {
             .post("/accounts/{id}/deposit-eur")
             .then()
             .statusCode(200);
-            // .body("balance", is(greaterThanOrEqualTo(0.0f)));
     }
     @Test
     public void testWithdrawEUR() {
@@ -86,7 +84,6 @@ public class AccountControllerRestAssuredTest {
             .post("/accounts/{id}/withdraw-eur")
             .then()
             .statusCode(200);
-            // .body("balance", is(greaterThanOrEqualTo(0.0f)));
     }
     @Test
     public void testTransferFunds() {

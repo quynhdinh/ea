@@ -5,14 +5,14 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 public class AccountTest {
-    // @Test
+    @Test
     public void testDeposit() {
         Account account = new Account(12345);
         account.deposit(100.0);
         assertThat(account.getBalance(), equalTo(100.0));
     }
 
-    // @Test
+    @Test
     public void testWithdraw() {
         Account account = new Account(12345);
         account.deposit(200.0);
