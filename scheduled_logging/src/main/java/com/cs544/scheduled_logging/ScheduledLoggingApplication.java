@@ -13,6 +13,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import ch.qos.logback.classic.Logger;
+import lombok.AllArgsConstructor;
+import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 
 @SpringBootApplication
 @EnableScheduling
@@ -27,13 +30,15 @@ class MyCustomEvent extends ApplicationEvent {
 	}
 }
 @Component
+@Slf4j
+@AllArgsConstructor
 class MyProducer {
-	private static final Logger log = (Logger) LoggerFactory.getLogger(MyProducer.class);
+	// private static final Logger log = (Logger) LoggerFactory.getLogger(MyProducer.class);
 	private final ApplicationEventPublisher applicationEventPublisher;
 
-	public MyProducer(ApplicationEventPublisher applicationEventPublisher) {
-		this.applicationEventPublisher = applicationEventPublisher;
-	}
+	// public MyProducer(ApplicationEventPublisher applicationEventPublisher) {
+	// 	this.applicationEventPublisher = applicationEventPublisher;
+	// }
 
 	@Scheduled(fixedRate = 3000)
 	public void produceEvent() {
@@ -45,8 +50,9 @@ class MyProducer {
 
 }
 @Component
+@Slf4j
 class MyListener {
-	private static final Logger log = (Logger) LoggerFactory.getLogger(MyListener.class);
+	// private static final Logger log = (Logger) LoggerFactory.getLogger(MyListener.class);
 	@EventListener
 	public void handleCustomEvent(MyCustomEvent event) {
 		log.info("Received custom event: {}", event);
