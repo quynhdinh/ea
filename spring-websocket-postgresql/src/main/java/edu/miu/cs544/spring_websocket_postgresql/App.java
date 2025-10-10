@@ -12,7 +12,10 @@ import org.springframework.stereotype.Repository;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
+
 import java.time.OffsetDateTime;
 import java.util.List;
 
@@ -41,6 +44,8 @@ class Product {
 @Getter
 @Entity
 @Table(name = "messages")
+@NoArgsConstructor
+@ToString
 class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,26 +65,15 @@ class Message {
         this.content = content;
         this.timestamp = OffsetDateTime.now();
     }
-	public Message() {
-		// default constructor
-	}
-
-    @Override
-    public String toString() {
-        return "Message{" + "id=" + id + ", sender='" + sender + '\'' + ", content='" + content + '\'' + ", timestamp=" + timestamp + '}';
-    }
 }
 
 @Repository
 interface MessageRepository extends JpaRepository<Message, Long> {}
 
 @Controller
+@AllArgsConstructor
 class MessageController {
     private final MessageRepository messageRepository;
-
-    public MessageController(MessageRepository messageRepository) {
-        this.messageRepository = messageRepository;
-    }
 
     // Define GraphQL queries and mutations here
 	@QueryMapping
