@@ -6,14 +6,19 @@ Enterprise Architecture
   - [Scheduling, Events, Logging](#scheduling-events-logging)
   - [Monitoring](#monitoring)
     - [Actuator](#actuator)
+  - [Architecting for modularity](#architecting-for-modularity)
+    - [Event based integrations](#event-based-integrations)
+    - [@Async](#async)
+    - [Outbox pattern](#outbox-pattern)
+    - [Microservices with Spring Cloud](#microservices-with-spring-cloud)
 
 ## Spring AOP
-Joinpoint: a point in the execution of a program, such as the execution of a method or the handling of an exception.
+`Joinpoint`: a point in the execution of a program, such as the execution of a method or the handling of an exception.
 
-Pointcut: a predicate that matches join points. It is used to specify where advice should be applied.
+`Pointcut`: a predicate that matches join points. It is used to specify where advice should be applied.
 
-Aspect is the combination of advice and pointcut: what advice to be exec on what pointcut 
-Weaving is seen at execution time
+`Aspect` is the combination of advice and pointcut: what advice to be exec on what pointcut
+`Weaving` is seen at execution time
 Types of advice: 
 
 `@Before`
@@ -36,24 +41,28 @@ Repository, service, configuration inherits from @component
 
 Service sent events: lightway alternative to ws, 1 way, server-> client streaming
 
-People criticize java for its anachronistic syntax but Java 21
-- sealed types, pattern matching, records, smart switch, data oriented programming, virtual thread
+People criticize java for its anachronistic syntax but Java 21 comes with many modern features
+- `sealed types`, `pattern matching`, `records`, `smart switch`, `data oriented programming`, `virtual thread`
 Java development best practices
-- RAII: C/C++ initialize a resource and release it when done
+- `RAII`: C/C++ initialize a resource and release it when done
 ## Messaging
 `Offset`: Every consumer manages their own offset in the topic
 Brokers manage their own message consumed ?
 
 How do consumers keep track of messages ?
-When a consumer consumes a message, will there be a commit from the consumer back to the broker ? when it dies, it can asked the last commit, you can enable auto commiting
+- Each consumer maintains an offset, which is a pointer to the last message it has processed in a partition. This offset is stored in a special topic called `__consumer_offsets`, allowing consumers to resume processing from where they left off in case of failures or restarts. `auto commit` means the consumer will commit the offset automatically at specified intervals, while manual commit gives the application control over when offsets are committed, allowing for more precise handling of message processing and retries.
 
-Problems with jms
+Problems with JMS ?
 - It allows broker upgrades that can break wire protocol, forcing both producer and consumer to upgrade simultaneously,
 - Producer and consumer share the same address, making routing between them difficult
 - JMS require server client have to together upgrade
 
-Four main integration styles discussed in enterprise integration?
-
+Four main integration styles discussed in enterprise integration ?
+- File transfer
+- Shared database
+- Remote procedure invocation
+- Messaging
+  
 What are the advantages of messaging architecture ?
 - Async by default
 - Provide decoupling
@@ -74,7 +83,28 @@ Kafka. If the topic is full, scale out partitions across multiple brokers, also 
 
 ## Scheduling, Events, Logging
 - Cron expression 6 or 7 fields second, minute, hour, day of month, month, day of week, year (optional)
-- @ConfigurationProperties(prefix="app.scheduling"). You can then @Autowired AppProperties and access the properties
+- `@ConfigurationProperties(prefix="app.scheduling")`. You can then @Autowired AppProperties and access the properties
 ## Monitoring
 ### Actuator
- 
+## Architecting for modularity
+### Event based integrations
+- `Event Notification`: A messaging approach where the event message simply notifies the consumer that something has happened, and the consumer must then make a separate call to the producer to get the details of what happened, leading to tight coupling between producer and consumer
+- `Event carried state transfer`: A messaging approach where each event message contains actionable details that the consumer can use, avoiding coupling between the producer and consumer by including all necessary information within the message itself
+- `Event sourcing`: A pattern where every change to the system state is captured as a sequence of events, allowing for system reconstruction, historical replay, and the ability to apply new algorithms retroactively to past events
+- `CQRS`: Command Query Responsibility Segregation (CQRS) represents the concept of using different data structures optimized for different read and write modalities, such as using Postgres for writes, Redis for fast reads, and Elasticsearch for full-text search
+### @Async
+The `@Async` annotation wraps the method invocation in a separate thread, allowing the original method to return immediately while the event is processed in the background, providing immediate responsiveness but potentially risking state loss.
+### Outbox pattern
+`@ApplicationModuleListener`: come from Spring Modulith, it created a table called event_publisher, having columns like(event_id, listener_id, event_type, serialized event presentation, publication_date and completion_date). Once the event is published, it is stored in the table with publication_date, and a separate process reads from this table and publishes the event to the message broker, updating the completion_date once done. This ensures that events are reliably published even if the main transaction fails.
+
+Outbox pattern helps reconciling non-transactional resources against transactional ledger. Ensuring event delivery and consistency by storing events in a database table and guaranteeing their eventual processing, even if initial delivery fails.
+And then when multiple service instances restart and attempt to resubmit the same event, messages may be published multiple times. => use a lock registry
+
+Spring Modulith.
+- Messaging module that supports externalization, which can publish messages to different brokers like Kafka, RabbitMQ, JMS, SQS, Pulsar and other using Spring Integration.
+- Uses ArchUnit which allows testing and enforcing architectural rules and constraints in the system.
+- Organize code around features rather than technical roles, keeping related concerns together, and being deliberate about what is made public(No different controllers, repositories, services, entities packages(then you have to make them public)).
+- If a nested package type is injected into another module, the test will fail, indicating that an implementation detail of one module has been inadvertently leaked into another module.
+- C4 component diagram modeling system boundaries and components generating using PlantUML.
+
+### Microservices with Spring Cloud
