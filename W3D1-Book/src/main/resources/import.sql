@@ -1,0 +1,2 @@
+INSERT INTO book VALUES(DEFAULT, 5.5,   'Author1', '978-3-16-148410-0', 'title1');
+INSERT INTO book VALUES(DEFAULT, 10.10, 'Author2', '978-3-16-148410-0', 'title1');
