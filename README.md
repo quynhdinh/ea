@@ -10,7 +10,8 @@ Enterprise Architecture
     - [Event based integrations](#event-based-integrations)
     - [@Async](#async)
     - [Outbox pattern](#outbox-pattern)
-    - [Microservices with Spring Cloud](#microservices-with-spring-cloud)
+  - [Microservices with Spring Cloud](#microservices-with-spring-cloud)
+  - [Security](#security)
 
 ## Spring AOP
 `Joinpoint`: a point in the execution of a program, such as the execution of a method or the handling of an exception.
@@ -43,8 +44,14 @@ Service sent events: lightway alternative to ws, 1 way, server-> client streamin
 
 People criticize java for its anachronistic syntax but Java 21 comes with many modern features
 - `sealed types`, `pattern matching`, `records`, `smart switch`, `data oriented programming`, `virtual thread`
+
 Java development best practices
 - `RAII`: C/C++ initialize a resource and release it when done
+- Spring boot features
+
+  When Spring boots starts up, it looks for `spring.factories` and `AutoConfiguration.imports` having all the auto configuration classes, and then it loads them in order. Each auto configuration class has a conditional annotation(`@ConditionalOnMissingBean`, `@ConditionalOnClass`, `@ConditionalOnProperty` which allows dynamic configuration based on the presence of certain classes, beans or specific environment setup at RUNTIME)
+
+  For example: `spring-boot-starter` is pre-packaged dependencies that automatically configure components when added to the classpath, such as setting up a web server, installing Spring MVC, and configuring JSON marshalling without additional code
 ## Messaging
 `Offset`: Every consumer manages their own offset in the topic
 Brokers manage their own message consumed ?
@@ -107,4 +114,10 @@ Spring Modulith.
 - If a nested package type is injected into another module, the test will fail, indicating that an implementation detail of one module has been inadvertently leaked into another module.
 - C4 component diagram modeling system boundaries and components generating using PlantUML.
 
-### Microservices with Spring Cloud
+## Microservices with Spring Cloud
+## Security
+`OncePerRequestFilter`: A specialized filter that ensures it is executed only once per request, even if the request passes through multiple filters in the filter chain. This is useful for tasks that should only be performed once, such as setting up security context or logging.
+
+`SecurityFilterChain`: A configuration that defines the order and behavior of security filters in a web application. It allows you to customize how requests are processed and secured by specifying which filters to apply and in what order.
+
+`UserDetailsService`: is a interface has a single method, loadUserByUsername(String username), which is used to retrieve user details from a data source, such as a database. This method returns a UserDetails object that contains information about the user, including their username, password, and authorities (roles/permissions).
