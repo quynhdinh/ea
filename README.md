@@ -3,6 +3,7 @@ Enterprise Architecture
 - [Enterprise Application with Java and Spring Boot](#enterprise-application-with-java-and-spring-boot)
   - [Spring AOP](#spring-aop)
   - [Messaging](#messaging)
+    - [Integration](#integration)
   - [Scheduling, Events, Logging](#scheduling-events-logging)
   - [Monitoring](#monitoring)
     - [Actuator](#actuator)
@@ -64,6 +65,15 @@ Problems with JMS ?
 - Producer and consumer share the same address, making routing between them difficult
 - JMS require server client have to together upgrade
 
+A traditional messaging system provides guaranteed delivery by storing messages on disk until they are successfully processed by the consumer(ActiveMQ, RabbitMQ)
+Staged event-driven architecture
+IMAP protocol
+
+If the consumer is slower than the producer, the messages will pile up in the queue -> not fault tolerant
+
+Kafka. If the topic is full, scale out partitions across multiple brokers, also Kafka supports replication that means each partition can be replicated across multiple brokers. Leaders replicate messages to followers,...
+
+### Integration
 Four main integration styles discussed in enterprise integration ?
 - File transfer
 - Shared database
@@ -80,14 +90,22 @@ What are the advantages of messaging architecture ?
 
 Why is RPC considered a problematic integration style?
 - It makes synchronous method invocations that fail if the remote service disappears
-A traditional messaging system provides guaranteed delivery by storing messages on disk until they are successfully processed by the consumer(ActiveMQ, RabbitMQ)
-Staged event-driven architecture
-IMAP protocol
 
-If the consumer is slower than the producer, the messages will pile up in the queue -> not fault tolerant
+`Inbound adapter in Spring Integration ?`
+- is a component that pulls data from an external source, such as a file system, database, or messaging queue, and introduces it into an integration flow. In this example, the file inbound adapter reads files from a specified directory.
 
-Kafka. If the topic is full, scale out partitions across multiple brokers, also Kafka supports replication that means each partition can be replicated across multiple brokers. Leaders replicate messages to followers,...
+`How does polling work in Spring Integration when using a inbound adapter?`
+- By default, Spring Integration polls an external source every second. The polling interval can be customized using fixed rate, fixed delay, or cron expressions. This approach allows controlled and serialized message processing in a staged event-driven architecture.
 
+`What is the purpose of a transformer in a Spring Integration flow?`
+- Transformers convert messages from one format to another, such as transforming a file to a string (FileToStringTransformer) or converting a JSON string to a Java object (JSONToObjectTransformer). They enable data type conversion and preparation for further processing in the integration flow.
+
+`Message spliting`: one message -> multiple messages
+
+`What are message headers in Spring Integration?`
+- are metadata associated with a message payload, providing additional context and information about the message. They can include details like file name, message origin, correlation information for splitting and aggregation, and other out-of-band information not part of the main payload.
+
+Protocol that allows real time push notification without constant polling ? IMAP
 ## Scheduling, Events, Logging
 - Cron expression 6 or 7 fields second, minute, hour, day of month, month, day of week, year (optional)
 - `@ConfigurationProperties(prefix="app.scheduling")`. You can then @Autowired AppProperties and access the properties
@@ -116,6 +134,12 @@ Spring Modulith.
 
 ## Microservices with Spring Cloud
 ## Security
+Spring Security acts as a big filter around the application that guards requests from the outside world, handling authentication (identifying who is making the request) and authorization (determining what permissions the authenticated user has)
+
+A `Principal` is a security object that primarily provides the name of the currently authenticated user, and has been part of the Java security specification for approximately 20 years
+
+webauthn core dependency: improve authentication mechanisms beyond traditional password-based systems
+
 `OncePerRequestFilter`: A specialized filter that ensures it is executed only once per request, even if the request passes through multiple filters in the filter chain. This is useful for tasks that should only be performed once, such as setting up security context or logging.
 
 `SecurityFilterChain`: A configuration that defines the order and behavior of security filters in a web application. It allows you to customize how requests are processed and secured by specifying which filters to apply and in what order.
