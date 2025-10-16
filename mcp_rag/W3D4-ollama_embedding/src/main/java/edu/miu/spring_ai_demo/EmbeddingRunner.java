@@ -30,16 +30,17 @@ public class EmbeddingRunner implements CommandLineRunner {
         crawler.setMaxPages(150);
         crawler.setDelayMs(100);
 
-        List<Document> pages = crawler
-            .crawl("https://docs.spring.io/spring-ai/reference/");
+        // Next, modify the EmbeddingRunner class in the ollama-embedding project to get its List<Document> from the PdfReader instead of the WebCrawler.
+        PdfReader pdfReader = new PdfReader("W1D1.pdf");
+        List<Document> pages = pdfReader.read();
+        logger.info("Crawled {} pages", pages.size());
 
         TokenTextSplitter splitter = new TokenTextSplitter();
         List<Document> documents = splitter.apply(pages);
-
+        logger.info("Crawled {} documents", documents.size());
         logger.info("Adding documents to vector store...");
         vectorStore.add(documents);
         logger.info("Done!");
     }
 }
-
 

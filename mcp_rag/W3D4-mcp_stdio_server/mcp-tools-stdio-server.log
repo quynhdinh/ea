@@ -1,0 +1,110 @@
+2025-10-16T14:27:48.352-05:00  INFO 61252 --- [main] e.m.s.SpringAiMcpStdioServer             : Starting SpringAiMcpStdioServer using Java 24.0.1 with PID 61252 (/Users/quynh/Documents/github/ea/temp/ea/mcp_rag/W3D4-mcp_stdio_server/target/classes started by quynh in /Users/quynh/Documents/github/ea/temp/ea/mcp_rag/W3D4-mcp_stdio_server)
+2025-10-16T14:27:48.352-05:00  INFO 61252 --- [main] e.m.s.SpringAiMcpStdioServer             : No active profile set, falling back to 1 default profile: "default"
+2025-10-16T14:27:48.701-05:00  INFO 61252 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable tools capabilities, notification: true
+2025-10-16T14:27:48.702-05:00  INFO 61252 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Registered tools: 4
+2025-10-16T14:27:48.702-05:00  INFO 61252 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable resources capabilities, notification: true
+2025-10-16T14:27:48.702-05:00  INFO 61252 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable prompts capabilities, notification: true
+2025-10-16T14:27:48.702-05:00  INFO 61252 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable completions capabilities
+2025-10-16T14:27:48.803-05:00  INFO 61252 --- [main] e.m.s.SpringAiMcpStdioServer             : Started SpringAiMcpStdioServer in 0.708 seconds (process running for 0.936)
+2025-10-16T14:27:57.156-05:00  INFO 61252 --- [pool-2-thread-1] i.m.server.McpAsyncServer                : Client initialize request - Protocol: 2024-11-05, Capabilities: ClientCapabilities[experimental=null, roots=null, sampling=null], Info: Implementation[name=Java SDK MCP Client, version=1.0.0]
+2025-10-16T14:28:36.300-05:00  INFO 61252 --- [boundedElastic-1] edu.miu.spring_ai_demo.DateTimeTool      : Tool called: getCurrentDateTime
+2025-10-16T14:28:49.493-05:00  INFO 61252 --- [boundedElastic-1] edu.miu.spring_ai_demo.CalculatorTool    : adding 5 3
+2025-10-16T14:31:57.675-05:00  INFO 64379 --- [main] e.m.s.SpringAiMcpStdioServer             : Starting SpringAiMcpStdioServer v0.0.1-SNAPSHOT using Java 24.0.1 with PID 64379 (/Users/quynh/Documents/github/ea/temp/ea/mcp_rag/W3D4-mcp_stdio_server/target/demo.springai.tool.mcp.server-0.0.1-SNAPSHOT.jar started by quynh in /Users/quynh/Documents/github/ea/temp/ea/mcp_rag/W3D4-mcp_stdio_server)
+2025-10-16T14:31:57.676-05:00  INFO 64379 --- [main] e.m.s.SpringAiMcpStdioServer             : No active profile set, falling back to 1 default profile: "default"
+2025-10-16T14:31:58.143-05:00  INFO 64379 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable tools capabilities, notification: true
+2025-10-16T14:31:58.144-05:00  INFO 64379 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Registered tools: 4
+2025-10-16T14:31:58.144-05:00  INFO 64379 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable resources capabilities, notification: true
+2025-10-16T14:31:58.145-05:00  INFO 64379 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable prompts capabilities, notification: true
+2025-10-16T14:31:58.145-05:00  INFO 64379 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable completions capabilities
+2025-10-16T14:31:58.220-05:00  INFO 64379 --- [pool-2-thread-1] i.m.server.McpAsyncServer                : Client initialize request - Protocol: 2024-11-05, Capabilities: ClientCapabilities[experimental=null, roots=null, sampling=null], Info: Implementation[name=Java SDK MCP Client, version=1.0.0]
+2025-10-16T14:31:58.261-05:00  INFO 64379 --- [main] e.m.s.SpringAiMcpStdioServer             : Started SpringAiMcpStdioServer in 0.811 seconds (process running for 1.085)
+2025-10-16T14:31:58.313-05:00  INFO 64379 --- [boundedElastic-1] edu.miu.spring_ai_demo.DateTimeTool      : Tool called: getCurrentDateTime
+2025-10-16T14:31:58.345-05:00  INFO 64379 --- [boundedElastic-1] edu.miu.spring_ai_demo.CalculatorTool    : adding 5 3
+2025-10-16T14:44:54.786-05:00  INFO 73517 --- [main] e.m.s.SpringAiMcpStdioServer             : Starting SpringAiMcpStdioServer v0.0.1-SNAPSHOT using Java 24.0.1 with PID 73517 (/Users/quynh/Documents/github/ea/temp/ea/mcp_rag/W3D4-mcp_stdio_server/target/demo.springai.tool.mcp.server-0.0.1-SNAPSHOT.jar started by quynh in /Users/quynh/Documents/github/ea/temp/ea/mcp_rag/W3D4-mcp_stdio_server)
+2025-10-16T14:44:54.787-05:00  INFO 73517 --- [main] e.m.s.SpringAiMcpStdioServer             : No active profile set, falling back to 1 default profile: "default"
+2025-10-16T14:44:55.339-05:00  INFO 73517 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable tools capabilities, notification: true
+2025-10-16T14:44:55.339-05:00  INFO 73517 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Registered tools: 4
+2025-10-16T14:44:55.339-05:00  INFO 73517 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable resources capabilities, notification: true
+2025-10-16T14:44:55.340-05:00  INFO 73517 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable prompts capabilities, notification: true
+2025-10-16T14:44:55.340-05:00  INFO 73517 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable completions capabilities
+2025-10-16T14:44:55.436-05:00  INFO 73517 --- [pool-2-thread-1] i.m.server.McpAsyncServer                : Client initialize request - Protocol: 2024-11-05, Capabilities: ClientCapabilities[experimental=null, roots=null, sampling=null], Info: Implementation[name=Java SDK MCP Client, version=1.0.0]
+2025-10-16T14:44:55.501-05:00  INFO 73517 --- [main] e.m.s.SpringAiMcpStdioServer             : Started SpringAiMcpStdioServer in 0.924 seconds (process running for 1.261)
+2025-10-16T14:44:55.577-05:00  INFO 73517 --- [boundedElastic-1] edu.miu.spring_ai_demo.DateTimeTool      : Tool called: getCurrentDateTime
+2025-10-16T14:44:55.622-05:00  INFO 73517 --- [boundedElastic-1] edu.miu.spring_ai_demo.CalculatorTool    : adding 5 3
+2025-10-16T16:45:20.301-05:00  INFO 35291 --- [main] e.m.s.SpringAiMcpStdioServer             : Starting SpringAiMcpStdioServer v0.0.1-SNAPSHOT using Java 24.0.1 with PID 35291 (/Users/quynh/Documents/github/ea/temp/ea/mcp_rag/W3D4-mcp_stdio_server/target/demo.springai.tool.mcp.server-0.0.1-SNAPSHOT.jar started by quynh in /Users/quynh/Documents/github/ea/temp/ea/mcp_rag/W3D4-mcp_stdio_server)
+2025-10-16T16:45:20.303-05:00  INFO 35291 --- [main] e.m.s.SpringAiMcpStdioServer             : No active profile set, falling back to 1 default profile: "default"
+2025-10-16T16:45:21.044-05:00  INFO 35291 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable tools capabilities, notification: true
+2025-10-16T16:45:21.045-05:00  INFO 35291 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Registered tools: 4
+2025-10-16T16:45:21.046-05:00  INFO 35291 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable resources capabilities, notification: true
+2025-10-16T16:45:21.046-05:00  INFO 35291 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable prompts capabilities, notification: true
+2025-10-16T16:45:21.047-05:00  INFO 35291 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable completions capabilities
+2025-10-16T16:45:21.190-05:00  INFO 35291 --- [pool-2-thread-1] i.m.server.McpAsyncServer                : Client initialize request - Protocol: 2024-11-05, Capabilities: ClientCapabilities[experimental=null, roots=null, sampling=null], Info: Implementation[name=Java SDK MCP Client, version=1.0.0]
+2025-10-16T16:45:21.341-05:00  INFO 35291 --- [main] e.m.s.SpringAiMcpStdioServer             : Started SpringAiMcpStdioServer in 1.37 seconds (process running for 1.784)
+2025-10-16T16:45:21.433-05:00  INFO 35291 --- [boundedElastic-1] edu.miu.spring_ai_demo.DateTimeTool      : Tool called: getCurrentDateTime
+2025-10-16T16:45:21.472-05:00  INFO 35291 --- [boundedElastic-1] edu.miu.spring_ai_demo.CalculatorTool    : adding 5 3
+2025-10-16T16:46:04.339-05:00  INFO 35871 --- [main] e.m.s.SpringAiMcpStdioServer             : Starting SpringAiMcpStdioServer using Java 24.0.1 with PID 35871 (/Users/quynh/Documents/github/ea/temp/ea/mcp_rag/W3D4-mcp_stdio_server/target/classes started by quynh in /Users/quynh/Documents/github/ea/temp/ea/mcp_rag/W3D4-mcp_stdio_server)
+2025-10-16T16:46:04.340-05:00  INFO 35871 --- [main] e.m.s.SpringAiMcpStdioServer             : No active profile set, falling back to 1 default profile: "default"
+2025-10-16T16:46:04.643-05:00  INFO 35871 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable tools capabilities, notification: true
+2025-10-16T16:46:04.643-05:00  INFO 35871 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Registered tools: 5
+2025-10-16T16:46:04.643-05:00  INFO 35871 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable resources capabilities, notification: true
+2025-10-16T16:46:04.643-05:00  INFO 35871 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable prompts capabilities, notification: true
+2025-10-16T16:46:04.644-05:00  INFO 35871 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable completions capabilities
+2025-10-16T16:46:04.742-05:00  INFO 35871 --- [main] e.m.s.SpringAiMcpStdioServer             : Started SpringAiMcpStdioServer in 0.566 seconds (process running for 0.705)
+2025-10-16T16:46:42.413-05:00  INFO 36451 --- [main] e.m.s.SpringAiMcpStdioServer             : Starting SpringAiMcpStdioServer v0.0.1-SNAPSHOT using Java 24.0.1 with PID 36451 (/Users/quynh/Documents/github/ea/temp/ea/mcp_rag/W3D4-mcp_stdio_server/target/demo.springai.tool.mcp.server-0.0.1-SNAPSHOT.jar started by quynh in /Users/quynh/Documents/github/ea/temp/ea/mcp_rag/W3D4-mcp_stdio_server)
+2025-10-16T16:46:42.414-05:00  INFO 36451 --- [main] e.m.s.SpringAiMcpStdioServer             : No active profile set, falling back to 1 default profile: "default"
+2025-10-16T16:46:42.858-05:00  INFO 36451 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable tools capabilities, notification: true
+2025-10-16T16:46:42.859-05:00  INFO 36451 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Registered tools: 5
+2025-10-16T16:46:42.859-05:00  INFO 36451 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable resources capabilities, notification: true
+2025-10-16T16:46:42.859-05:00  INFO 36451 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable prompts capabilities, notification: true
+2025-10-16T16:46:42.859-05:00  INFO 36451 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable completions capabilities
+2025-10-16T16:46:42.956-05:00  INFO 36451 --- [pool-2-thread-1] i.m.server.McpAsyncServer                : Client initialize request - Protocol: 2024-11-05, Capabilities: ClientCapabilities[experimental=null, roots=null, sampling=null], Info: Implementation[name=Java SDK MCP Client, version=1.0.0]
+2025-10-16T16:46:43.020-05:00  INFO 36451 --- [main] e.m.s.SpringAiMcpStdioServer             : Started SpringAiMcpStdioServer in 0.804 seconds (process running for 1.057)
+2025-10-16T16:46:43.108-05:00  INFO 36451 --- [boundedElastic-1] edu.miu.spring_ai_demo.DateTimeTool      : Tool called: getCurrentDateTime
+2025-10-16T16:46:43.210-05:00  INFO 36451 --- [boundedElastic-1] edu.miu.spring_ai_demo.CalculatorTool    : adding 5 3
+2025-10-16T16:46:43.223-05:00  INFO 36451 --- [boundedElastic-1] edu.miu.spring_ai_demo.WeatherTool       : Fetching weather forecast for location: Fairfield, IA
+2025-10-16T16:46:44.306-05:00  INFO 36472 --- [main] e.m.s.SpringAiMcpStdioServer             : Starting SpringAiMcpStdioServer v0.0.1-SNAPSHOT using Java 24.0.1 with PID 36472 (/Users/quynh/Documents/github/ea/temp/ea/mcp_rag/W3D4-mcp_stdio_server/target/demo.springai.tool.mcp.server-0.0.1-SNAPSHOT.jar started by quynh in /Users/quynh/Documents/github/ea/temp/ea/mcp_rag/W3D4-mcp_stdio_server)
+2025-10-16T16:46:44.309-05:00  INFO 36472 --- [main] e.m.s.SpringAiMcpStdioServer             : No active profile set, falling back to 1 default profile: "default"
+2025-10-16T16:46:44.706-05:00  INFO 36472 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable tools capabilities, notification: true
+2025-10-16T16:46:44.707-05:00  INFO 36472 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Registered tools: 5
+2025-10-16T16:46:44.707-05:00  INFO 36472 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable resources capabilities, notification: true
+2025-10-16T16:46:44.707-05:00  INFO 36472 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable prompts capabilities, notification: true
+2025-10-16T16:46:44.707-05:00  INFO 36472 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable completions capabilities
+2025-10-16T16:46:44.793-05:00  INFO 36472 --- [pool-2-thread-1] i.m.server.McpAsyncServer                : Client initialize request - Protocol: 2024-11-05, Capabilities: ClientCapabilities[experimental=null, roots=null, sampling=null], Info: Implementation[name=Java SDK MCP Client, version=1.0.0]
+2025-10-16T16:46:44.833-05:00  INFO 36472 --- [main] e.m.s.SpringAiMcpStdioServer             : Started SpringAiMcpStdioServer in 0.745 seconds (process running for 0.954)
+2025-10-16T16:46:44.902-05:00  INFO 36472 --- [boundedElastic-1] edu.miu.spring_ai_demo.DateTimeTool      : Tool called: getCurrentDateTime
+2025-10-16T16:46:44.940-05:00  INFO 36472 --- [boundedElastic-1] edu.miu.spring_ai_demo.CalculatorTool    : adding 5 3
+2025-10-16T16:46:44.947-05:00  INFO 36472 --- [boundedElastic-1] edu.miu.spring_ai_demo.WeatherTool       : Fetching weather forecast for location: Fairfield, IA
+2025-10-16T16:47:13.458-05:00  INFO 36849 --- [main] e.m.s.SpringAiMcpStdioServer             : Starting SpringAiMcpStdioServer v0.0.1-SNAPSHOT using Java 24.0.1 with PID 36849 (/Users/quynh/Documents/github/ea/temp/ea/mcp_rag/W3D4-mcp_stdio_server/target/demo.springai.tool.mcp.server-0.0.1-SNAPSHOT.jar started by quynh in /Users/quynh/Documents/github/ea/temp/ea/mcp_rag/W3D4-mcp_stdio_server)
+2025-10-16T16:47:13.459-05:00  INFO 36849 --- [main] e.m.s.SpringAiMcpStdioServer             : No active profile set, falling back to 1 default profile: "default"
+2025-10-16T16:47:13.877-05:00  INFO 36849 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable tools capabilities, notification: true
+2025-10-16T16:47:13.878-05:00  INFO 36849 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Registered tools: 5
+2025-10-16T16:47:13.878-05:00  INFO 36849 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable resources capabilities, notification: true
+2025-10-16T16:47:13.878-05:00  INFO 36849 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable prompts capabilities, notification: true
+2025-10-16T16:47:13.879-05:00  INFO 36849 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable completions capabilities
+2025-10-16T16:47:13.956-05:00  INFO 36849 --- [pool-2-thread-1] i.m.server.McpAsyncServer                : Client initialize request - Protocol: 2024-11-05, Capabilities: ClientCapabilities[experimental=null, roots=null, sampling=null], Info: Implementation[name=Java SDK MCP Client, version=1.0.0]
+2025-10-16T16:47:13.987-05:00  INFO 36849 --- [main] e.m.s.SpringAiMcpStdioServer             : Started SpringAiMcpStdioServer in 0.801 seconds (process running for 1.133)
+2025-10-16T16:47:14.053-05:00  INFO 36849 --- [boundedElastic-1] edu.miu.spring_ai_demo.DateTimeTool      : Tool called: getCurrentDateTime
+2025-10-16T16:47:14.079-05:00  INFO 36849 --- [boundedElastic-1] edu.miu.spring_ai_demo.CalculatorTool    : adding 5 3
+2025-10-16T16:47:14.081-05:00  INFO 36849 --- [boundedElastic-1] edu.miu.spring_ai_demo.WeatherTool       : Fetching weather forecast for location: Fairfield, IA
+2025-10-16T16:47:20.617-05:00  INFO 36877 --- [main] e.m.s.SpringAiMcpStdioServer             : Starting SpringAiMcpStdioServer v0.0.1-SNAPSHOT using Java 24.0.1 with PID 36877 (/Users/quynh/Documents/github/ea/temp/ea/mcp_rag/W3D4-mcp_stdio_server/target/demo.springai.tool.mcp.server-0.0.1-SNAPSHOT.jar started by quynh in /Users/quynh/Documents/github/ea/temp/ea/mcp_rag/W3D4-mcp_stdio_server)
+2025-10-16T16:47:20.618-05:00  INFO 36877 --- [main] e.m.s.SpringAiMcpStdioServer             : No active profile set, falling back to 1 default profile: "default"
+2025-10-16T16:47:21.095-05:00  INFO 36877 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable tools capabilities, notification: true
+2025-10-16T16:47:21.096-05:00  INFO 36877 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Registered tools: 5
+2025-10-16T16:47:21.097-05:00  INFO 36877 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable resources capabilities, notification: true
+2025-10-16T16:47:21.097-05:00  INFO 36877 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable prompts capabilities, notification: true
+2025-10-16T16:47:21.097-05:00  INFO 36877 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable completions capabilities
+2025-10-16T16:47:21.190-05:00  INFO 36877 --- [pool-2-thread-1] i.m.server.McpAsyncServer                : Client initialize request - Protocol: 2024-11-05, Capabilities: ClientCapabilities[experimental=null, roots=null, sampling=null], Info: Implementation[name=Java SDK MCP Client, version=1.0.0]
+2025-10-16T16:47:21.226-05:00  INFO 36877 --- [main] e.m.s.SpringAiMcpStdioServer             : Started SpringAiMcpStdioServer in 0.826 seconds (process running for 1.046)
+2025-10-16T16:47:21.285-05:00  INFO 36877 --- [boundedElastic-1] edu.miu.spring_ai_demo.DateTimeTool      : Tool called: getCurrentDateTime
+2025-10-16T16:47:21.309-05:00  INFO 36877 --- [boundedElastic-1] edu.miu.spring_ai_demo.CalculatorTool    : adding 5 3
+2025-10-16T16:47:21.313-05:00  INFO 36877 --- [boundedElastic-1] edu.miu.spring_ai_demo.WeatherTool       : Fetching weather forecast for location: Fairfield, IA
+2025-10-16T16:47:36.715-05:00  INFO 37127 --- [main] e.m.s.SpringAiMcpStdioServer             : Starting SpringAiMcpStdioServer v0.0.1-SNAPSHOT using Java 24.0.1 with PID 37127 (/Users/quynh/Documents/github/ea/temp/ea/mcp_rag/W3D4-mcp_stdio_server/target/demo.springai.tool.mcp.server-0.0.1-SNAPSHOT.jar started by quynh in /Users/quynh/Documents/github/ea/temp/ea/mcp_rag/W3D4-mcp_stdio_server)
+2025-10-16T16:47:36.716-05:00  INFO 37127 --- [main] e.m.s.SpringAiMcpStdioServer             : No active profile set, falling back to 1 default profile: "default"
+2025-10-16T16:47:37.158-05:00  INFO 37127 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable tools capabilities, notification: true
+2025-10-16T16:47:37.159-05:00  INFO 37127 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Registered tools: 5
+2025-10-16T16:47:37.159-05:00  INFO 37127 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable resources capabilities, notification: true
+2025-10-16T16:47:37.159-05:00  INFO 37127 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable prompts capabilities, notification: true
+2025-10-16T16:47:37.160-05:00  INFO 37127 --- [main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable completions capabilities
+2025-10-16T16:47:37.247-05:00  INFO 37127 --- [pool-2-thread-1] i.m.server.McpAsyncServer                : Client initialize request - Protocol: 2024-11-05, Capabilities: ClientCapabilities[experimental=null, roots=null, sampling=null], Info: Implementation[name=Java SDK MCP Client, version=1.0.0]
+2025-10-16T16:47:37.280-05:00  INFO 37127 --- [main] e.m.s.SpringAiMcpStdioServer             : Started SpringAiMcpStdioServer in 0.798 seconds (process running for 1.141)
+2025-10-16T16:47:37.317-05:00  INFO 37127 --- [boundedElastic-1] edu.miu.spring_ai_demo.WeatherTool       : Fetching weather forecast for location: Fairfield, IA
